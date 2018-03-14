@@ -11,4 +11,11 @@ public class HelloWildFlyController {
     public String sayHello(){
         return ("Hello, SpringBoot on Wildfly");
     }
+
+    @RequestMapping(method= RequestMethod.GET ,  value="/categories", headers = "Accept=application/json")
+    public ArrayList<Category> categories(@RequestParam(value="id", defaultValue= "1") int id) {
+
+        ArrayList<Category> returnedCats = new CategoryFacade().getCategories();
+        return returnedCats;
+    }
 }
